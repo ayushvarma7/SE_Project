@@ -11,10 +11,11 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
 
-  return (
+  return (  
     <div className={classes.mapContainer}>
+      hello
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+        bootstrapURLKeys={{ key: 'AIzaSyBYiJr6ppoBQObGDpAB3Xfgz7BVoM8kZ68' }}
         defaultCenter={coords}
         center={coords}
         defaultZoom={14}
