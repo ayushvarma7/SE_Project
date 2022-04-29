@@ -1,6 +1,8 @@
 import {useRef, useState} from "react";
 import { signup, login, logout, useAuth } from "./firebase";
 
+import "./LandingPage.css";
+
 export default function LandingPage({setState}){
 
     const [loading, setLoading]= useState();
@@ -15,7 +17,7 @@ export default function LandingPage({setState}){
         await signup(emailRef.current.value, passwordRef.current.value);
         }catch(error){
             alert("Error!");
-        }
+        } 
         setLoading(false);
     }
 
@@ -40,14 +42,14 @@ export default function LandingPage({setState}){
         setLoading(false);
     }
     return(
-        <div>
-             <h1>landing page</h1>
-             <div>currently logged in: {currentUser?.email}</div>
-            <div id="fields"> 
-            <input ref={emailRef} placeholder="email"/>
-            <input ref={passwordRef} type="password" placeholder="password"/>
-           
-            </div>
+        <div className="wrapper">
+          <div className="input-container">
+             <h1>Login Page</h1>
+             <div>Currently logged in: {currentUser?.email}</div>
+              <div className="fields"> 
+                <input ref={emailRef} placeholder="email"/><br></br>
+                <input ref={passwordRef} type="password" placeholder="password"/>
+              </div>
             <button  disabled={loading || currentUser} onClick={handleSignUp}
             //  onClick={()=>{setState('map')} 
              >Sign Up</button>
@@ -56,7 +58,8 @@ export default function LandingPage({setState}){
                 }}
            
              >Log In</button> 
-           <button disabled={loading || !currentUser} onClick={handleLogOut}> Log Out</button>
+            <button disabled={loading || !currentUser} onClick={handleLogOut}> Log Out</button>
+          </div>
         </div>
     );
 }
